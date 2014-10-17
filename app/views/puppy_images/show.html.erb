@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Puppy:</strong>
+  <%= @puppy_image.puppy_id %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @puppy_image.desc %>
+</p>
+
+
+<%= image_tag @puppy_image.avatar.url, :style => "width:100px" %>
+<%= image_tag @puppy_image.avatar.url(:medium) %>
+<%= image_tag @puppy_image.avatar.url(:thumb) %>
+
+
+<%= link_to 'Edit', edit_puppy_image_path(@puppy_image) %> |
+<%= link_to 'Back', puppy_images_path %>

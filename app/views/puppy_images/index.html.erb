@@ -1,0 +1,27 @@
+<h1>Listing puppy_images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Puppy</th>
+      <th>Desc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @puppy_images.each do |puppy_image| %>
+      <tr>
+        <td><%= puppy_image.puppy_id %></td>
+        <td><%= puppy_image.desc %></td>
+        <td><%= link_to 'Show', puppy_image %></td>
+        <td><%= link_to 'Edit', edit_puppy_image_path(puppy_image) %></td>
+        <td><%= link_to 'Destroy', puppy_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Puppy image', new_puppy_image_path %>

@@ -1,0 +1,37 @@
+<%= form_for(@utility) do |f| %>
+  <% if @utility.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@utility.errors.count, "error") %> prohibited this utility from being saved:</h2>
+
+      <ul>
+      <% @utility.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :controller %><br>
+    <%= f.text_area :controller %>
+  </div>
+  <div class="field">
+    <%= f.label :t %><br>
+    <%= f.text_field :t %>
+  </div>
+  <div class="field">
+    <%= f.label :a %><br>
+    <%= f.text_field :a %>
+  </div>
+  <div class="field">
+    <%= f.label :action %><br>
+    <%= f.text_area :action %>
+  </div>
+  <div class="field">
+    <%= f.label :html_safe %><br>
+    <%= f.text_area :html_safe %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

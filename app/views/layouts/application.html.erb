@@ -1,14 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Puppies</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>Puppies</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 </head>
 <body>
+	<style>
+		#bg {
+			position: absolute;
+			width:100%;
+			height: 500px;
+			top:0;
+			background: url(<%= asset_path 'bg.jpg' %>) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			opacity: 0.8;
+			z-index:-1;
+		}
 
-<%= yield %>
+		.bg{
+			margin-top: 500px;
+		}
 
+		.lobster>ul{
+			font-family: 'Lobster', cursive;
+		}
+	.navbar-default {
+	    background-color: transparent !important;
+	    background-image: none;
+	    border:none;
+
+		-webkit-box-shadow:none;
+
+	}
+	.navbar-default .navbar-nav>li>a{
+		color: #fff;
+		font-weight: 200;
+		font-size: 120%;
+		padding-top: 15px;
+	}
+	.navbar-default .navbar-nav>li>a:hover{
+		color: #fff;
+		font-weight: 200;
+		font-size: 120%;
+		font-style: bold;
+		padding-top: 15px;
+	}
+	.message
+	{
+		position: absolute;
+		margin: auto;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 500px;
+		height: 100px;
+
+		text-shadow: 0 0 2px #eee; /* horizontal-offset vertical-offset 'blur' colour */
+		  -moz-text-shadow: 0 0 2px #eee;
+		  -webkit-text-shadow: 0 0 2px #eee;
+	}
+
+	</style>
+
+
+
+<nav class="navbar navbar-default" role="navigation" style="margin-top:10px">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style="padding-left:30px;" href="<%= root_path %>"><img style="width:60px" src="<%= asset_path 'icon.png' %>"></img></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <% if params[:controller] == 'puppies' %>
+        <li style="border-bottom: solid 4px #fff"><a href="<%= puppies_path %>">Dog Listings</a></li>
+      <% else %>
+        <li><a href="<%= puppies_path %>">Dog Listings</a></li>
+	   <% end %>
+      <% if params[:action] == 'involve' %>
+        <li style="border-bottom: solid 4px #fff"><%= link_to 'Get Involved', '/home/involve' %></li>
+
+      <% else %>
+        <li><%= link_to 'Get Involved', '/home/involve' %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="padding-right:30px;">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Account <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+							<% if current_user == nil %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+			<% else %>
+			<li><%= link_to current_user.email.humanize, edit_user_registration_path %></li>
+			            <li class="divider"></li>
+	            	<li><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></li>
+
+			<% end %>
+
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	<div id="bg"></div>
+	<div class="message">
+	<center>
+	<h1>Adopt A Dog Today</h1>
+	<a href="#content" class="btn btn-lg btn-info">Get Started</a>
+	</center></div>
+	<div class="container" id="content" style="margin-top:440px">
+		<div class="row">			
+
+
+		<%= yield %>
+		</div>	
+		<div style="margin-bottom:40px;"></div>
+	</div>
 </body>
 </html>

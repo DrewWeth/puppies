@@ -1,0 +1,2 @@
+module PuppyImagesHelper
+end

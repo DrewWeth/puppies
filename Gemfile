@@ -11,10 +11,17 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-group :production do
-  # Postgres for heroku
-  gem 'pg'
-end
+gem 'devise'
+gem 'authority'
+gem 'rolify'
+
+gem "paperclip", "~> 4.2"
+
+
+# group :production do
+#   # Postgres for heroku
+#   gem 'pg'
+# end
 
 
 # Use SCSS for stylesheets

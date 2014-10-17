@@ -1,19 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @puppy.name %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @puppy.desc %>
-</p>
-
-<p>
-  <strong>Img url:</strong>
-  <img style="width:100px" src="<%= @puppy.img_url %>"></img>
-</p>
-
-<%= link_to 'Edit', edit_puppy_path(@puppy) %> |
+<div class="col-md-6">
 <%= link_to 'Back', puppies_path %>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<center><img style="height:200px" class="img-circle" src="<%= @puppy.img_url %>"></img>
+
+			<br><h2 style="display:inline">This is <b><%= @puppy.name %></b>!</h2></center>
+		
+<h5>Description</h5><%= @puppy.desc %>
+		<%= link_to 'Edit', edit_puppy_path(@puppy) %></li>
+</li>
+	</ul>
+</div>
+<div class="col-md-6">
+<h2><%= @puppy.name %>'s Gallery <%= link_to 'Add Image', { :controller => 'puppy_images', :action => 'new', :pup_id => params[:id]}, :style => 'display:inline', :class => 'pull-right btn btn-default' %>
+</h2>
+	<% @images.each do |i| %>
+	<%= image_tag i.avatar.url(:thumb) %>
+
+	<% end %>
+
+</div>
+

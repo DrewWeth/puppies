@@ -10,11 +10,16 @@ class PuppiesController < ApplicationController
   # GET /puppies/1
   # GET /puppies/1.json
   def show
+    @images = PuppyImage.where(:puppy_id => params[:id])
   end
 
   # GET /puppies/new
   def new
     @puppy = Puppy.new
+  end
+
+  def involve
+
   end
 
   # GET /puppies/1/edit

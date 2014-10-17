@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  controller: MyText
+  t: MyString
+  a: MyString
+  action: MyText
+  html_safe: MyText
+
+two:
+  controller: MyText
+  t: MyString
+  a: MyString
+  action: MyText
+  html_safe: MyText
