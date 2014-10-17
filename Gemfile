@@ -18,10 +18,10 @@ gem 'rolify'
 gem "paperclip", "~> 4.2"
 
 
-# group :production do
-#   # Postgres for heroku
-#   gem 'pg'
-# end
+group :production do
+  # Postgres for heroku
+  gem 'pg'
+end
 
 
 # Use SCSS for stylesheets
