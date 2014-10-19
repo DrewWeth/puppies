@@ -4,7 +4,7 @@ Drew Wetherington
 
 Deployed App URL
 ------------------------
-PUPPYPOWER.HEROKUAPP.COM
+http://puppypower.herokuapp.com/
 
 
 Github Repo
